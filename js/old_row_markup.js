@@ -105,6 +105,9 @@ var Experience = {
             },
             index: 3,
             children: [
+              11,
+              12,
+              13
             ],
             parent: [],
             element: function(){
@@ -288,6 +291,181 @@ var Experience = {
             return el;
         }
       },
+      {
+        name: "sort-by-publishing-date",
+        type: "menu-button-container",
+        class: "menu-button-container",
+        id: function(){
+            let self = this;
+            return ""+self.name+"-"+self.class;
+        },
+        content: function(){
+            return "Published";
+        },
+        index: 11,
+        children: [
+        ],
+        parent: [
+          3
+        ],
+        element: function(){
+            let self = this;
+            let el = document.createElement("div");
+            el.setAttribute("id", self.id());
+            el.classList.add(self.class);
+            return el;
+        }
+      },
+      {
+        name: "sort-by-downloads",
+        type: "button-container",
+        class: "menu-button-container",
+        id: function(){
+            let self = this;
+            return ""+self.name+"-"+self.class;
+        },
+        content: function(){
+            return "Downloads";
+        },
+        index: 12,
+        children: [
+        ],
+        parent: [
+          3
+        ],
+        element: function(){
+            let self = this;
+            let el = document.createElement("div");
+            el.setAttribute("id", self.id());
+            el.classList.add(self.class);
+            return el;
+        }
+      },
+      {
+        name: "add-item",
+        type: "button-container",
+        class: "menu-button-container",
+        id: function(){
+            let self = this;
+            return ""+self.name+"-"+self.class;
+        },
+        content: function(){
+            return "Add";
+        },
+        index: 13,
+        children: [
+        ],
+        parent: [
+          3
+        ],
+        element: function(){
+            let self = this;
+            let el = document.createElement("div");
+            el.setAttribute("id", self.id());
+            el.classList.add(self.class);
+            return el;
+        }
+      },
+      {
+        name: "login-header",
+        type: "container",
+        class: "form-component-container",
+        id: function(){
+            let self = this;
+            return ""+self.name+"-"+self.class;
+        },
+        content: function(){
+            return "test";
+        },
+        index: 14,
+        children: [
+        ],
+        parent: [
+          4
+        ],
+        element: function(){
+            let self = this;
+            let el = document.createElement("div");
+            el.setAttribute("id", self.id());
+            el.classList.add(self.class);
+            return el;
+        }
+      },
+      {
+        name: "login-instructions",
+        type: "container",
+        class: "form-component-container",
+        id: function(){
+            let self = this;
+            return ""+self.name+"-"+self.class;
+        },
+        content: function(){
+            return "instructions will go here";
+        },
+        index: 15,
+        children: [
+        ],
+        parent: [
+          4
+        ],
+        element: function(){
+            let self = this;
+            let el = document.createElement("div");
+            el.setAttribute("id", self.id());
+            el.classList.add(self.class);
+            return el;
+        }
+      },
+      {
+        name: "submit-login-credentials",
+        type: "button-container",
+        class: "form-component-container",
+        id: function(){
+            let self = this;
+            return ""+self.name+"-"+self.class;
+        },
+        content: function(){
+            return "test";
+        },
+        index: 16,
+        children: [
+        ],
+        parent: [
+          4
+        ],
+        element: function(){
+            let self = this;
+            let el = document.createElement("div");
+            el.setAttribute("id", self.id());
+            el.classList.add(self.class);
+            return el;
+        }
+      },
+      {
+        name: "exit-login-form",
+        type: "button-container",
+        class: "form-component-container",
+        id: function(){
+            let self = this;
+            return ""+self.name+"-"+self.class;
+        },
+        content: function(){
+            return "exit";
+        },
+        index: 17,
+        children: [
+        ],
+        parent: [
+          4
+        ],
+        element: function(){
+            let self = this;
+            let el = document.createElement("div");
+            el.setAttribute("id", self.id());
+            el.classList.add(self.class);
+            return el;
+        }
+      },
       /*{
               name: "card",
               type: "container",
@@ -330,7 +508,8 @@ var Experience = {
                       return true;
                   }
               },
-              appMenuSettingsContainerVisible: false
+              appMenuSettingsContainerVisible: false,
+              loginPageOverlayContainerVisible: false
           },
           fx: function(target){
               let val = target;
@@ -340,6 +519,33 @@ var Experience = {
               console.log(`${val}`);
               console.log("------------------------------------");
               switch(val){
+                  case "exit-login-form-form-component-container":  /* SAME CODE AS ~~111~~~ below */
+                      setTimeout(function(){
+                        document.getElementById("login-page-overlay-container").style.display = "none";
+                      }, 500);
+                      document.getElementById("login-page-overlay-container").style.opacity = "0";
+                      document.getElementById("login-page-overlay-container").style.height = "0";
+                      self.loginPageOverlayContainerVisible = false;
+                  break;
+                  case "add-item-menu-button-container":
+                      if(self.loginPageOverlayContainerVisible){  /* ~~~111~~~ */
+                        setTimeout(function(){
+                          document.getElementById("login-page-overlay-container").style.display = "none";
+                        }, 500);
+                        document.getElementById("login-page-overlay-container").style.opacity = "0";
+                        document.getElementById("login-page-overlay-container").style.height = "0";
+                        self.loginPageOverlayContainerVisible = false;
+                      }
+                      else{
+                        document.getElementById("login-page-overlay-container").style.display = "block";
+                        setTimeout(function(){
+                          document.getElementById("login-page-overlay-container").style.opacity = "1.0";
+                          document.getElementById("login-page-overlay-container").style.height = "100%";
+
+                          self.loginPageOverlayContainerVisible = true;
+                        }, 50);
+                      }
+                  break;
                   case "app-menu-button-container":
                       console.log("toggle menu settings container");
                       if(self.appMenuSettingsContainerVisible){
