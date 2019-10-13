@@ -54,6 +54,11 @@ var Experience = {
             },
             index: 1,
             children: [
+              6,
+              7,
+              8,
+              9,
+              10
             ],
             parent: [],
             element: function(){
@@ -134,28 +139,155 @@ var Experience = {
               }
             },
       {
-              name: "app-selection-page",
-              type: "container",
-              class: "overlay-container",
-              id: function(){
-                  let self = this;
-                  return ""+self.name+"-"+self.class;
-              },
-              content: function(){
-                  return "";
-              },
-              index: 5,
-              children: [
-              ],
-              parent: [],
-              element: function(){
-                  let self = this;
-                  let el = document.createElement("div");
-                  el.setAttribute("id", self.id());
-                  el.classList.add(self.class);
-                  return el;
-              }
-            },
+        name: "app-selection-page",
+        type: "container",
+        class: "overlay-container",
+        id: function(){
+            let self = this;
+            return ""+self.name+"-"+self.class;
+        },
+        content: function(){
+            return "";
+        },
+        index: 5,
+        children: [
+        ],
+        parent: [],
+        element: function(){
+            let self = this;
+            let el = document.createElement("div");
+            el.setAttribute("id", self.id());
+            el.classList.add(self.class);
+            return el;
+        }
+      },
+      {
+        name: "augr",
+        type: "container",
+        class: "preview-container",
+        id: function(){
+            let self = this;
+            return ""+self.name+"-"+self.class;
+        },
+        content: function(){
+            return "AugR";
+        },
+        index: 6,
+        children: [
+        ],
+        parent: [
+          1
+        ],
+        element: function(){
+            let self = this;
+            let el = document.createElement("div");
+            el.setAttribute("id", self.id());
+            el.classList.add(self.class);
+            el.classList.add("top-bins");
+            return el;
+        }
+      },
+      {
+        name: "shoppAIR",
+        type: "container",
+        class: "preview-container",
+        id: function(){
+            let self = this;
+            return ""+self.name+"-"+self.class;
+        },
+        content: function(){
+            return "shoppAIR";
+        },
+        index: 7,
+        children: [
+        ],
+        parent: [
+          1
+        ],
+        element: function(){
+            let self = this;
+            let el = document.createElement("div");
+            el.setAttribute("id", self.id());
+            el.classList.add(self.class);
+            el.classList.add("top-bins");
+            return el;
+        }
+      },
+      {
+        name: "snackshack",
+        type: "container",
+        class: "preview-container",
+        id: function(){
+            let self = this;
+            return ""+self.name+"-"+self.class;
+        },
+        content: function(){
+            return "snack shack";
+        },
+        index: 8,
+        children: [
+        ],
+        parent: [
+          1
+        ],
+        element: function(){
+            let self = this;
+            let el = document.createElement("div");
+            el.setAttribute("id", self.id());
+            el.classList.add(self.class);
+            return el;
+        }
+      },
+      {
+        name: "lyoko",
+        type: "container",
+        class: "preview-container",
+        id: function(){
+            let self = this;
+            return ""+self.name+"-"+self.class;
+        },
+        content: function(){
+            return "lyoko";
+        },
+        index: 9,
+        children: [
+        ],
+        parent: [
+          1
+        ],
+        element: function(){
+            let self = this;
+            let el = document.createElement("div");
+            el.setAttribute("id", self.id());
+            el.classList.add(self.class);
+            return el;
+        }
+      },
+      {
+        name: "solAR",
+        type: "container",
+        class: "preview-container",
+        id: function(){
+            let self = this;
+            return ""+self.name+"-"+self.class;
+        },
+        content: function(){
+            return "solAR";
+        },
+        index: 10,
+        children: [
+        ],
+        parent: [
+          1
+        ],
+        element: function(){
+            let self = this;
+            let el = document.createElement("div");
+            el.setAttribute("id", self.id());
+            el.classList.add(self.class);
+            return el;
+        }
+      },
       /*{
               name: "card",
               type: "container",
