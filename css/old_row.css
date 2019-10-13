@@ -38,6 +38,10 @@ body, html{
     border: 2px black solid;
     position: absolute;
     top: 10%;
+    height: 0;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s, height 0.5s;
     border-radius: 0 0 0 15px;
 }
 
@@ -46,8 +50,25 @@ body, html{
     text-align: center;
     position: absolute;
     background-color: black;
-    top: 13%;
-    z-index: 100; /* refer to style diagram , i=2*/
+    top: 15%;
+    cursor: pointer;
+    z-index: 101; /* refer to style diagram , i=2*/
+}
+
+#login-page-overlay-container{
+    z-index: 150;
+    width: 100%;
+    height: 0;
+    background-color: rgba(255,255, 0, 1.0);
+    cursor: pointer;
+}
+
+#app-selection-page-container{
+    z-index: 50;
+    width: 100%;
+    height: 0;
+    background-color: rgba(255, 0, 255, 1.0);
+    cursor: pointer;
 }
 
 @media only screen and (min-width: 640px){
@@ -70,10 +91,8 @@ body, html{
 
   #app-menu-settings-container{
       width: 250px;
-      height: 300px;
       right: 50%;
       margin-right: -250px;
-
   }
 
   #app-menu-button-container{
@@ -81,7 +100,11 @@ body, html{
       height: 50px;
       line-height: 50px;
       right: 50%;
-      margin-right: -250px;
+      margin-right: -240px;
+  }
+
+  #login-page-overlay-container{
+
   }
 
   #app-selection-page-container{

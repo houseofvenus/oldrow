@@ -189,46 +189,50 @@ var Experience = {
       {
           view: "flat",
           event: "click",
+          accessibility: {
+              isMobile: function(){
+                  if(window.innerWidth>640){
+                      return false;
+                  }
+                  else{
+                      return true;
+                  }
+              },
+              appMenuSettingsContainerVisible: false
+          },
           fx: function(target){
               let val = target;
+              let self = this;
 
               console.log("------------------------------------");
               console.log(`${val}`);
               console.log("------------------------------------");
               switch(val){
-                  case "preview-launcher":
-                      playPreviewOfProductInFocus();
-                      break;
-                  case "site-menu-button":
-                      toggleMenuVisibility();
-                      break;
-                  case "site-menu-site-menu-item-0":
-                      toggleSiteSubMenuVisibility();
-                      break;
-                  case "site-menu-site-menu-item-1":
-                      openDemonstrationsGallery();
-                      break;
-                  case "card-purchase-button-container":
-                      openCheckout('card');
-                      break;
-                  case "aria-purchase-button-container":
-                      openCheckout('aria');
-                      break;
-                  case "site-menu-site-menu-item-2":
-                      openParkMap();
-                      break;
-                  case "page-indicator-row-page-indicator-bubble-0":
-                      switchToPage(0);
-                      break;
-                  case "page-indicator-row-page-indicator-bubble-1":
-                      switchToPage(1);
-                      break;
-                  case "page-indicator-row-page-indicator-bubble-2":
-                      switchToPage(2);
-                      break;
-                  case "preview-closer":
-                      closePreviewOfProductInFocus();
-                      break;
+                  case "app-menu-button-container":
+                      console.log("toggle menu settings container");
+                      if(self.appMenuSettingsContainerVisible){
+                          setTimeout(function(){
+                            document.getElementById("app-menu-settings-container").style.display = "none";
+                          }, 500);
+                          document.getElementById("app-menu-settings-container").style.opacity = "0";
+                          document.getElementById("app-menu-settings-container").style.height = "0";
+                          self.appMenuSettingsContainerVisible = false;
+                      }
+                      else{
+                          document.getElementById("app-menu-settings-container").style.display = "block";
+                          setTimeout(function(){
+                            document.getElementById("app-menu-settings-container").style.opacity = "1.0";
+                            if(self.accessibility.isMobile()){
+                                document.getElementById("app-menu-settings-container").style.height = "50%";
+                            }
+                            else{
+                                document.getElementById("app-menu-settings-container").style.height = "300px";
+                            }
+                            self.appMenuSettingsContainerVisible = true;
+                          }, 50);
+
+                      }
+                  break;
                   default:
                       console.log("no specific functionality defined for this target.");
                   break;
