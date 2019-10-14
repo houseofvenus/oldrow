@@ -166,7 +166,7 @@ var Experience = {
       },
       {
         name: "augr",
-        type: "container",
+        type: "button-container",
         class: "preview-container",
         id: function(){
             let self = this;
@@ -192,7 +192,7 @@ var Experience = {
       },
       {
         name: "shoppAIR",
-        type: "container",
+        type: "button-container",
         class: "preview-container",
         id: function(){
             let self = this;
@@ -218,7 +218,7 @@ var Experience = {
       },
       {
         name: "snackshack",
-        type: "container",
+        type: "button-container",
         class: "preview-container",
         id: function(){
             let self = this;
@@ -243,7 +243,7 @@ var Experience = {
       },
       {
         name: "lyoko",
-        type: "container",
+        type: "button-container",
         class: "preview-container",
         id: function(){
             let self = this;
@@ -268,7 +268,7 @@ var Experience = {
       },
       {
         name: "solAR",
-        type: "container",
+        type: "button-container",
         class: "preview-container",
         id: function(){
             let self = this;
@@ -466,6 +466,106 @@ var Experience = {
             return el;
         }
       },
+      {
+        name: "tap-to-open-selection",
+        type: "button-container",
+        class: "selection-component-container",
+        id: function(){
+            let self = this;
+            return ""+self.name+"-"+self.class;
+        },
+        content: function(){
+            return "tap to open";
+        },
+        index: 18,
+        children: [
+        ],
+        parent: [
+          5
+        ],
+        element: function(){
+            let self = this;
+            let el = document.createElement("div");
+            el.setAttribute("id", self.id());
+            el.classList.add(self.class);
+            return el;
+        }
+      },
+      {
+        name: "exit-selection-preview",
+        type: "button-container",
+        class: "selection-component-container",
+        id: function(){
+            let self = this;
+            return ""+self.name+"-"+self.class;
+        },
+        content: function(){
+            return "exit";
+        },
+        index: 19,
+        children: [
+        ],
+        parent: [
+          5
+        ],
+        element: function(){
+            let self = this;
+            let el = document.createElement("div");
+            el.setAttribute("id", self.id());
+            el.classList.add(self.class);
+            return el;
+        }
+      },
+      {
+        name: "selection-download-count",
+        type: "button-container",
+        class: "selection-component-container",
+        id: function(){
+            let self = this;
+            return ""+self.name+"-"+self.class;
+        },
+        content: function(){
+            return "download count";
+        },
+        index: 20,
+        children: [
+        ],
+        parent: [
+          5
+        ],
+        element: function(){
+            let self = this;
+            let el = document.createElement("div");
+            el.setAttribute("id", self.id());
+            el.classList.add(self.class);
+            return el;
+        }
+      },
+      {
+        name: "selection-active-user-count",
+        type: "button-container",
+        class: "selection-component-container",
+        id: function(){
+            let self = this;
+            return ""+self.name+"-"+self.class;
+        },
+        content: function(){
+            return "active user count";
+        },
+        index: 21,
+        children: [
+        ],
+        parent: [
+          5
+        ],
+        element: function(){
+            let self = this;
+            let el = document.createElement("div");
+            el.setAttribute("id", self.id());
+            el.classList.add(self.class);
+            return el;
+        }
+      },
       /*{
               name: "card",
               type: "container",
@@ -509,7 +609,8 @@ var Experience = {
                   }
               },
               appMenuSettingsContainerVisible: false,
-              loginPageOverlayContainerVisible: false
+              loginPageOverlayContainerVisible: false,
+              previewContainerInFocus: null
           },
           fx: function(target){
               let val = target;
@@ -519,6 +620,36 @@ var Experience = {
               console.log(`${val}`);
               console.log("------------------------------------");
               switch(val){
+                  case "augr-preview-container":
+                      document.getElementById("augr-preview-container").style.width = "100%";
+                      document.getElementById("augr-preview-container").style.height = "100%";
+                      self.previewContainerInFocus = "augr-preview-container";
+                      document.getElementById("app-selection-page-overlay-container").style.display = "block";
+                      setTimeout(function(){
+                        document.getElementById("app-selection-page-overlay-container").style.height = "100%";
+                        document.getElementById("app-selection-page-overlay-container").style.opacity = "1.0";
+                      }, 500);
+                  break;
+                  case "shoppAIR-preview-container":
+                      document.getElementById("shoppAIR-preview-container").style.width = "100%";
+                      document.getElementById("shoppAIR-preview-container").style.height = "100%";
+                      self.previewContainerInFocus = "shoppAIR-preview-container";
+                  break;
+                  case "snackshack-preview-container":
+                      document.getElementById("snackshack-preview-container").style.width = "100%";
+                      document.getElementById("snackshack-preview-container").style.height = "100%";
+                      self.previewContainerInFocus = "snackshack-preview-container";
+                  break;
+                  case "lyoko-preview-container":
+                      document.getElementById("lyoko-preview-container").style.width = "100%";
+                      document.getElementById("lyoko-preview-container").style.height = "100%";
+                      self.previewContainerInFocus = "lyoko-preview-container";
+                  break;
+                  case "solAR-preview-container":
+                      document.getElementById("solAR-preview-container").style.width = "100%";
+                      document.getElementById("solAR-preview-container").style.height = "100%";
+                      self.previewContainerInFocus = "solAR-preview-container";
+                  break;
                   case "exit-login-form-form-component-container":  /* SAME CODE AS ~~111~~~ below */
                       setTimeout(function(){
                         document.getElementById("login-page-overlay-container").style.display = "none";
