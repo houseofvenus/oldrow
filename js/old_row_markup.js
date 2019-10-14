@@ -566,6 +566,56 @@ var Experience = {
             return el;
         }
       },
+      {
+        name: "selection-description",
+        type: "container",
+        class: "selection-component-container",
+        id: function(){
+            let self = this;
+            return ""+self.name+"-"+self.class;
+        },
+        content: function(){
+            return "selection description will go here";
+        },
+        index: 22,
+        children: [
+        ],
+        parent: [
+          5
+        ],
+        element: function(){
+            let self = this;
+            let el = document.createElement("div");
+            el.setAttribute("id", self.id());
+            el.classList.add(self.class);
+            return el;
+        }
+      },
+      {
+        name: "selection-title",
+        type: "container",
+        class: "selection-component-container",
+        id: function(){
+            let self = this;
+            return ""+self.name+"-"+self.class;
+        },
+        content: function(){
+            return "selection title goes here";
+        },
+        index: 23,
+        children: [
+        ],
+        parent: [
+          5
+        ],
+        element: function(){
+            let self = this;
+            let el = document.createElement("div");
+            el.setAttribute("id", self.id());
+            el.classList.add(self.class);
+            return el;
+        }
+      },
       /*{
               name: "card",
               type: "container",
@@ -610,7 +660,23 @@ var Experience = {
               },
               appMenuSettingsContainerVisible: false,
               loginPageOverlayContainerVisible: false,
-              previewContainerInFocus: null
+              previewContainerInFocus: null,
+              showAppSelectionPreview: function(target){
+                let self = this;
+                  self.previewContainerInFocus = target;
+                  document.getElementById("world-stream-stream-container").scrollTo({ top: document.getElementById(target).offsetTop, behavior: "smooth"});
+                  document.getElementById("app-selection-page-overlay-container").style.display = "block";
+                  setTimeout(function(){
+                    let selectionComponents = document.getElementById("app-selection-page-overlay-container").children;
+                    document.getElementById("app-selection-page-overlay-container").style.height = "100%";
+                    document.getElementById("app-selection-page-overlay-container").style.opacity = "1.0";
+                    for(var y=0; y<selectionComponents.length; y++){
+                      (function(){
+                        selectionComponents[y].style.display = "block";
+                      })();
+                    }
+                  }, 500);
+              }
           },
           fx: function(target){
               let val = target;
@@ -623,32 +689,55 @@ var Experience = {
                   case "augr-preview-container":
                       document.getElementById("augr-preview-container").style.width = "100%";
                       document.getElementById("augr-preview-container").style.height = "100%";
-                      self.previewContainerInFocus = "augr-preview-container";
-                      document.getElementById("app-selection-page-overlay-container").style.display = "block";
-                      setTimeout(function(){
-                        document.getElementById("app-selection-page-overlay-container").style.height = "100%";
-                        document.getElementById("app-selection-page-overlay-container").style.opacity = "1.0";
-                      }, 500);
+                      //document.getElementById("world-stream-stream-container").scrollTo({ top: document.getElementById("augr-preview-container").offsetTop, behavior: "smooth"});
+                      //self.accessibility.previewContainerInFocus = "augr-preview-container";
+
+                      self.accessibility.showAppSelectionPreview("augr-preview-container");
+
                   break;
                   case "shoppAIR-preview-container":
                       document.getElementById("shoppAIR-preview-container").style.width = "100%";
                       document.getElementById("shoppAIR-preview-container").style.height = "100%";
-                      self.previewContainerInFocus = "shoppAIR-preview-container";
+                      //self.accessibility.previewContainerInFocus = "shoppAIR-preview-container";
+
+                      self.accessibility.showAppSelectionPreview("shoppAIR-preview-container");
                   break;
                   case "snackshack-preview-container":
                       document.getElementById("snackshack-preview-container").style.width = "100%";
                       document.getElementById("snackshack-preview-container").style.height = "100%";
-                      self.previewContainerInFocus = "snackshack-preview-container";
+                      //self.accessibility.previewContainerInFocus = "snackshack-preview-container";
+
+                      self.accessibility.showAppSelectionPreview("snackshack-preview-container");
                   break;
                   case "lyoko-preview-container":
                       document.getElementById("lyoko-preview-container").style.width = "100%";
                       document.getElementById("lyoko-preview-container").style.height = "100%";
-                      self.previewContainerInFocus = "lyoko-preview-container";
+                      //self.accessibility.previewContainerInFocus = "lyoko-preview-container";
+
+                      self.accessibility.showAppSelectionPreview("lyoko-preview-container");
                   break;
                   case "solAR-preview-container":
                       document.getElementById("solAR-preview-container").style.width = "100%";
                       document.getElementById("solAR-preview-container").style.height = "100%";
-                      self.previewContainerInFocus = "solAR-preview-container";
+                      //self.accessibility.previewContainerInFocus = "solAR-preview-container";
+
+                      self.accessibility.showAppSelectionPreview("solAR-preview-container");
+                  break;
+                  case "exit-selection-preview-selection-component-container":  /* SAME CODE AS ~~111~~~ below */
+                      setTimeout(function(){
+                        document.getElementById("app-selection-page-overlay-container").style.display = "none";
+                        self.accessibility.previewContainerInFocus = null;
+                      }, 500);
+                      document.getElementById("app-selection-page-overlay-container").style.opacity = "0";
+                      document.getElementById("app-selection-page-overlay-container").style.height = "0";
+                      document.getElementById(self.accessibility.previewContainerInFocus).style.width = "36%";
+                      document.getElementById(self.accessibility.previewContainerInFocus).style.height = "45%";
+                      let selectionComponents = document.getElementById("app-selection-page-overlay-container").children;
+                      for(var z=0; z<selectionComponents.length; z++){
+                        (function(){
+                          selectionComponents[z].style.display = "none";
+                        })();
+                      }
                   break;
                   case "exit-login-form-form-component-container":  /* SAME CODE AS ~~111~~~ below */
                       setTimeout(function(){
@@ -656,16 +745,16 @@ var Experience = {
                       }, 500);
                       document.getElementById("login-page-overlay-container").style.opacity = "0";
                       document.getElementById("login-page-overlay-container").style.height = "0";
-                      self.loginPageOverlayContainerVisible = false;
+                      self.accessibility.loginPageOverlayContainerVisible = false;
                   break;
                   case "add-item-menu-button-container":
-                      if(self.loginPageOverlayContainerVisible){  /* ~~~111~~~ */
+                      if(self.accessibility.loginPageOverlayContainerVisible){  /* ~~~111~~~ */
                         setTimeout(function(){
                           document.getElementById("login-page-overlay-container").style.display = "none";
                         }, 500);
                         document.getElementById("login-page-overlay-container").style.opacity = "0";
                         document.getElementById("login-page-overlay-container").style.height = "0";
-                        self.loginPageOverlayContainerVisible = false;
+                        self.accessibility.loginPageOverlayContainerVisible = false;
                       }
                       else{
                         document.getElementById("login-page-overlay-container").style.display = "block";
@@ -673,19 +762,19 @@ var Experience = {
                           document.getElementById("login-page-overlay-container").style.opacity = "1.0";
                           document.getElementById("login-page-overlay-container").style.height = "100%";
 
-                          self.loginPageOverlayContainerVisible = true;
+                          self.accessibility.loginPageOverlayContainerVisible = true;
                         }, 50);
                       }
                   break;
                   case "app-menu-button-container":
                       console.log("toggle menu settings container");
-                      if(self.appMenuSettingsContainerVisible){
+                      if(self.accessibility.appMenuSettingsContainerVisible){
                           setTimeout(function(){
                             document.getElementById("app-menu-settings-container").style.display = "none";
                           }, 500);
                           document.getElementById("app-menu-settings-container").style.opacity = "0";
                           document.getElementById("app-menu-settings-container").style.height = "0";
-                          self.appMenuSettingsContainerVisible = false;
+                          self.accessibility.appMenuSettingsContainerVisible = false;
                       }
                       else{
                           document.getElementById("app-menu-settings-container").style.display = "block";
@@ -697,7 +786,7 @@ var Experience = {
                             else{
                                 document.getElementById("app-menu-settings-container").style.height = "300px";
                             }
-                            self.appMenuSettingsContainerVisible = true;
+                            self.accessibility.appMenuSettingsContainerVisible = true;
                           }, 50);
 
                       }
