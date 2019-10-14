@@ -26,7 +26,7 @@ var Experience = {
                 return ""+self.name+"-"+self.class;
             },
             content: function(){
-                return "";
+                return "R O W";
             },
             index: 0,
             children: [
@@ -375,7 +375,7 @@ var Experience = {
             return ""+self.name+"-"+self.class;
         },
         content: function(){
-            return "test";
+            return "Login";
         },
         index: 14,
         children: [
@@ -675,6 +675,30 @@ var Experience = {
                         selectionComponents[y].style.display = "block";
                       })();
                     }
+                    let descriptions = {
+                      "augr-preview-container": {
+                        description: "description for the AugR DIA goes here",
+                        title: "AugR"
+                      },
+                      "shoppAIR-preview-container": {
+                        description: "description for the shoppAIR DIA goes here",
+                        title: "shoppAIR"
+                      },
+                      "snackshack-preview-container": {
+                        description: "description for the SnackShack DIA goes here",
+                        title: "SnackShack"
+                      },
+                      "lyoko-preview-container": {
+                        description: "description for the Lyoko DIA goes here",
+                        title: "Lyoko"
+                      },
+                      "solAR-preview-container": {
+                        description: "description for the SolAR DIA goes here",
+                        title: "solAR"
+                      }
+                    };
+                    document.getElementById("selection-description-selection-component-container").innerHTML = `<p style="font-size: 24px;"">${descriptions[target].description}</p>`;
+                    document.getElementById("selection-title-selection-component-container").innerHTML = `<p style="font-size: 30px; font-weight: 700;">${descriptions[target].title}</p>`;
                   }, 500);
               }
           },
