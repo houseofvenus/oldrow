@@ -678,27 +678,39 @@ var Experience = {
                     let descriptions = {
                       "augr-preview-container": {
                         description: "description for the AugR DIA goes here",
-                        title: "AugR"
+                        title: "AugR",
+                        downloadCount: 0,
+                        activeUserCount: 0
                       },
                       "shoppAIR-preview-container": {
                         description: "description for the shoppAIR DIA goes here",
-                        title: "shoppAIR"
+                        title: "shoppAIR",
+                        downloadCount: 0,
+                        activeUserCount: 0
                       },
                       "snackshack-preview-container": {
                         description: "description for the SnackShack DIA goes here",
-                        title: "SnackShack"
+                        title: "SnackShack",
+                        downloadCount: 0,
+                        activeUserCount: 0
                       },
                       "lyoko-preview-container": {
                         description: "description for the Lyoko DIA goes here",
-                        title: "Lyoko"
+                        title: "Lyoko",
+                        downloadCount: 0,
+                        activeUserCount: 0
                       },
                       "solAR-preview-container": {
                         description: "description for the SolAR DIA goes here",
-                        title: "solAR"
+                        title: "solAR",
+                        downloadCount: 0,
+                        activeUserCount: 0
                       }
                     };
                     document.getElementById("selection-description-selection-component-container").innerHTML = `<p style="font-size: 24px;"">${descriptions[target].description}</p>`;
                     document.getElementById("selection-title-selection-component-container").innerHTML = `<p style="font-size: 30px; font-weight: 700;">${descriptions[target].title}</p>`;
+                    document.getElementById("selection-download-count-selection-component-container").innerHTML = `<p style="font-weight: 700;">${descriptions[target].downloadCount}</p>`;
+                    document.getElementById("selection-active-user-count-selection-component-container").innerHTML = `<p style="font-weight: 700;">${descriptions[target].activeUserCount}</p>`;
                   }, 500);
               }
           },
