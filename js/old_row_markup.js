@@ -677,40 +677,47 @@ var Experience = {
                     }
                     let descriptions = {
                       "augr-preview-container": {
-                        description: "description for the AugR DIA goes here",
+                        description: `<p class="description-line">a Dia that turns your webcam into an immersive web broswer.</p>
+                        <p class="description-line">Interact with content around you using your hadns and natural senses.</p>
+                        <p class="description-bottom-line">Design and share hyperreal spaces to explore ideas and experiences like never before.</p>`,
                         title: "AugR",
                         downloadCount: 0,
                         activeUserCount: 0
                       },
                       "shoppAIR-preview-container": {
-                        description: "description for the shoppAIR DIA goes here",
+                        description: `<p class="description-line">a DIA that offers a complete 21st century retail and grocery solution.</p>
+                        <p class="description-line">Find whatever you need to wear, eat, drink, or see. Find it, get it, focus in living, we are there.</p>
+                        <p class="description-bottom-line">Airborne. Immersive. Ready in 30! shoppAIR.</p>`,
                         title: "shoppAIR",
                         downloadCount: 0,
                         activeUserCount: 0
                       },
                       "snackshack-preview-container": {
-                        description: "description for the SnackShack DIA goes here",
+                        description: `<p class="description-line">a DIA for late night convenience.</p>
+                        <p class="description-bottom-line">Manage your sreaming, snack, and paper enertainment needs between the hours of 11PM and 6AM.</p>`,
                         title: "SnackShack",
                         downloadCount: 0,
                         activeUserCount: 0
                       },
                       "lyoko-preview-container": {
-                        description: "description for the Lyoko DIA goes here",
+                        description: `<p class="description-line">a DIA for creating and modifying DIAs usinf narual lanuage programming.</p>
+                        <p class="description-bottom-line">Lyoko supports English, French, Kikongo, and Lingala. It can process texts spliced with or wholly written in Javascript and/or Python.</p>`,
                         title: "Lyoko",
                         downloadCount: 0,
                         activeUserCount: 0
                       },
                       "solAR-preview-container": {
-                        description: "description for the SolAR DIA goes here",
+                        description: `<p class="description-line">a DIA for aerospace discovery and invention.</p>
+                        <p class="description-bottom-line">Explore.</p>`,
                         title: "solAR",
                         downloadCount: 0,
                         activeUserCount: 0
                       }
                     };
-                    document.getElementById("selection-description-selection-component-container").innerHTML = `<p style="font-size: 24px;"">${descriptions[target].description}</p>`;
-                    document.getElementById("selection-title-selection-component-container").innerHTML = `<p style="font-size: 30px; font-weight: 700;">${descriptions[target].title}</p>`;
-                    document.getElementById("selection-download-count-selection-component-container").innerHTML = `<p style="font-weight: 700;">${descriptions[target].downloadCount}</p>`;
-                    document.getElementById("selection-active-user-count-selection-component-container").innerHTML = `<p style="font-weight: 700;">${descriptions[target].activeUserCount}</p>`;
+                    document.getElementById("selection-description-selection-component-container").innerHTML = `<div style="font-size: 24px;"">${descriptions[target].description}</div>`;
+                    document.getElementById("selection-title-selection-component-container").innerHTML = `<div style="font-size: 30px; font-weight: 700;">${descriptions[target].title}</div>`;
+                    document.getElementById("selection-download-count-selection-component-container").innerHTML = `<div style="font-weight: 700;">${descriptions[target].downloadCount}</div>`;
+                    document.getElementById("selection-active-user-count-selection-component-container").innerHTML = `<div style="font-weight: 700;">${descriptions[target].activeUserCount}</div>`;
                   }, 500);
               }
           },
@@ -766,8 +773,8 @@ var Experience = {
                       }, 500);
                       document.getElementById("app-selection-page-overlay-container").style.opacity = "0";
                       document.getElementById("app-selection-page-overlay-container").style.height = "0";
-                      document.getElementById(self.accessibility.previewContainerInFocus).style.width = "36%";
-                      document.getElementById(self.accessibility.previewContainerInFocus).style.height = "45%";
+                      document.getElementById(self.accessibility.previewContainerInFocus).style.width = null;//"unset";//"36%";
+                      document.getElementById(self.accessibility.previewContainerInFocus).style.height = null;//"unset";//"45%";
                       let selectionComponents = document.getElementById("app-selection-page-overlay-container").children;
                       for(var z=0; z<selectionComponents.length; z++){
                         (function(){

@@ -232,15 +232,22 @@ body, html{
     display: none;
 }
 
+.description-line, .description-bottom-line{
+  font-weight: 700;
+}
+.description-line{
+  margin-bottom: 3%;
+}
+
 #selection-description-selection-component-container{
   position: absolute;
   line-height: 25px;
-  text-align: center;
+  text-align: justify;
   font-size: 20px;
   font-weight: 400;
   cursor: pointer;
   outline: none;
-  top: 40%;
+  top: 33%;
 
   display: none;
 }
