@@ -393,14 +393,14 @@ var Experience = {
       },
       {
         name: "login-instructions",
-        type: "container",
+        type: "instructions-container",
         class: "form-component-container",
         id: function(){
             let self = this;
             return ""+self.name+"-"+self.class;
         },
         content: function(){
-            return "instructions will go here";
+            return `<p>[1] Turn on your device's NFC reader</p><p> [2] Press the <span style="color:aquamarine;">connect</span> button below and tap your cARd with this device</p>`;
         },
         index: 15,
         children: [
@@ -425,7 +425,7 @@ var Experience = {
             return ""+self.name+"-"+self.class;
         },
         content: function(){
-            return "test";
+            return "connect";
         },
         index: 16,
         children: [

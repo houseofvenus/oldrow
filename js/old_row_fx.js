@@ -39,6 +39,9 @@ function processChildren(secondary){
                             else if(currentChild.type=="experience-element-container"){
                                 console.log(currentChild.id());
                             }
+                            else if(currentChild.type=="instructions-container"){ //DRAFT: make a function that adds specific builders for particular types defined by the user or a developer
+                                childElement.innerHTML = currentChild.content(parentObject.name);
+                            }
                             else{
                               childElement.textContent = currentChild.content(parentObject.name);
                                 //console.log(childElement);
